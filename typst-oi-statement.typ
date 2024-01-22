@@ -27,10 +27,10 @@
 )
 #let mono = "Consolas"
 #let serif = "New Computer Modern"
-#let cjk-serif = "Source Han Serif SC"
-#let cjk-sans = "Source Han Sans SC"
-#let cjk-mono = "FangSong"
-#let cjk-italic = "KaiTi"
+#let cjk-serif = "FZShuSong-Z01S"
+#let cjk-sans = "FZHei-B01S"
+#let cjk-mono = "FZFangSong-Z02S"
+#let cjk-italic = "FZKai-Z03S"
 
 #let problem-counter = counter("problem")
 #let saved-prob-list = state("all-problems", ())

@@ -136,7 +136,7 @@
 对于所有测试数据保证：$1 <= a,b <= 10^9$。
 
 #align(center,
-box( // 使用 box 来强制让表格居中
+box( // 使用 box 来强制让表格处于同一页
 tablex(
   columns: 4,
   auto-vlines: false,
