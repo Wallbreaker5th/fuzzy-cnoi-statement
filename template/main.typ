@@ -46,7 +46,13 @@
 #let (init, title, problem-table, next-problem, filename, current-filename, current-sample-filename, data-constraints-table-args) = document-class(
   contest-info,
   prob-list,
-  // custom-fonts 参数可以更改字体，字典各项的键值为：mono、serif、cjk-serif、cjk-sans、cjk-mono、cjk-italic，值为字体名。你可以只传入部分项。
+  // custom-fonts 参数可以更改字体，字典各项的键值为：mono、serif、cjk-serif、cjk-sans、cjk-mono、cjk-italic，值为字体名。你可以只传入部分项。默认分别为：
+  // - Consolas
+  // - New Computer Modern
+  // - 方正书宋（FZShuSong-Z01S）
+  // - 方正黑体（FZHei-B01S）
+  // - 方正仿宋（FZFangSong-Z02S）
+  // - 方正楷体（FZKai-Z03S）
   // header 参数可以自定义页眉，你需要传入一个 (contest-info, current-problem) => content 的函数。
   // footer 参数可以自定义页脚，你需要传入一个 (contest-info, current-problem) => content 的函数。
 )

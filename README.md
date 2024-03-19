@@ -13,6 +13,15 @@ This template is not affiliated with the China Computer Federation (CCF) or the 
 该模板与中国计算机学会（CCF）、NOI 委员会官方无关。在使用该模板时，建议标明比赛的非官方性质，以免造成误解。
 
 ## Usage
+Here are the fonts that this template will use, you can change the font by passing parameters:\
+以下是该模板会用到的字体，你可以通过传入参数的方式更换字体：
+- Consolas
+- New Computer Modern
+- 方正书宋（FZShuSong-Z01S）
+- 方正黑体（FZHei-B01S）
+- 方正仿宋（FZFangSong-Z02S）
+- 方正楷体（FZKai-Z03S）
+
 ```typ
 // Define your contest information and problem list
 // 定义比赛信息和题目列表
