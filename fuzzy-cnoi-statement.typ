@@ -1,6 +1,6 @@
 // Typst template for making NOI-like problems
 // Author: Wallbreaker5th
-// MIT License
+// MIT-0 License
 
 #import "@preview/codelst:2.0.0": sourcecode
 
