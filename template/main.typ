@@ -1,5 +1,7 @@
 #import "@preview/fuzzy-cnoi-statement:0.1.1": *;
 
+// 以下有大量 Fancy 的设置项。你可以根据需求，注释掉你不需要的内容，或者将你需要的内容取消注释。
+
 #let prob-list = (
   (
     name: "圆格染色",            // 题目名
@@ -8,9 +10,9 @@
     memory-limit: "512 MiB",    // 内存限制（显示同上）
     test-case-count: "10",      // 测试点数目（显示同上）
     test-case-equal: "是",      // 测试点是否等分
-    year: "2023",               // 这一行正常题目并不需要，仅作功能演示用
+    year: "2023",               // 你可以添加自定义的属性
   ),
-  // 实际上必需的只有 name-en
+  // 实际上必需的项只有 name-en
   // 下面是一些花活
   (
     name: "桂花树",
@@ -21,10 +23,11 @@
     test-case-count: "10",
     test-case-equal: "是",
     year: "2023",
-    submit-file-name: e => {
-      show raw: set text(size: 0.8em)
-      raw("tree." + e)
-    } // 可以为 str、content 或一个 extension:str=>content 的函数
+    // submit-file-name 为提交文件名，可以为 str、content 或一个 extension:str=>content 的函数
+    // submit-file-name: e => {
+    //   show raw: set text(size: 0.8em)
+    //   raw("tree." + e)
+    // } // 将其字体变小
   ),
   (
     name: "深搜",
@@ -67,7 +70,6 @@
 #title()
 
 #problem-table(
-  // 一般来说，默认的行的设置是够用的，这时你不用传入 extra-rows 参数。但如果你希望增加更多行，或者当你有太多题目需要展示，你可能需要详细地调整。
   // 默认会显示以下行（括号内为默认值，打星号的在没有题目有这一项时不会显示）：
   // - name 题目名称（无）
   // - type 题目类型（传统型）
@@ -80,23 +82,25 @@
   // - * test-case-count 测试点数目（10）
   // - * subtask-count 子任务数目（1）
   // - * test-case-equal 测试点是否等分（是）
-  // 如果你需要显示额外的行，可以使用 extra-rows 参数。
+  // 
+  // 一般来说，默认显示的行的设置是够用的。但如果你希望增加更多行，或者当你有太多题目需要展示，你可能需要 extra-rows 参数来添加新的行。
   // extra-rows 也可以覆盖掉默认的行。其在题目过多、需要将特定行的字体变小时尤其有用。
   extra-rows:(
     year: (                   // 对应的 field 名
       name: "年份",           // 显示的名字；可以用 content（调整字号等）
-      wrap: text,             // 显示的样式：若这一项是 str，则显示为 wrap(str)。默认为 text。
+      wrap: text,             // 显示的样式：若题目的这一项是 str，则显示为 wrap(str)，否则会直接显示这一项。默认为 text。
       always-display: false,  // 是否总是显示：若为 false，则至少要有一个题目有这一项才会显示。默认为 false。
-      default: "2023"         // 默认值，默认为“无”。你也可以传入一个函数，其接受一个参数，为当前题目的信息。
+      default: "2023"         // 默认值，默认为“无”。你也可以传入一个函数，其接受一个参数，为当前题目的信息，返回一个 str 或 content。
     ),
     contest: (
       name: "赛事",
-      wrap: text.with(fill: blue, size: 0.8em), // 更小的字体
+      wrap: text.with(fill: blue), // 你也可以在这里设置更小的字体
       always-display: true,
       default: "NOI"
     ),
     setter: (
-      name: text(fill: red)[出题人],
+      // name: text(size: 0.8em)[出题人], // 也许你需要更小的字号
+      name: "出题人",
       always-display: true,
       default: p => { p.name-en + "的出题人" }
     ),
@@ -106,12 +110,13 @@
       default: "这一行不会显示"
     )
   ),
-  // 提交源程序文件名的列表，每一种语言为 (语言名, 文件后缀名) 的二元组，或 (语言名, 文件后缀名, 表头字体大小) 的三元组。若 problem 没有指明 submit-file-name，则用题目英文名与后缀名拼接。
+  // 提交源程序文件名的列表，每一种语言为 (语言名, 文件后缀名) 的二元组，或 (语言名, 文件后缀名, 首列字体大小) 的三元组。若 problem 没有指明 submit-file-name，则用题目英文名与后缀名拼接。
   languages:(
     ("C++", "cpp"),
-    ("D++", "dpp", 0.8em) // 更小的字号
+    ("D++", "dpp"),
+    // ("D++", "dpp", 0.8em), // 更小的字号
   ),
-  // 各个语言的编译选项，每一种语言为 (语言名, 编译选项) 的二元组，或 (语言名, 编译选项, 表头字体大小) 的三元组。
+  // 各个语言的编译选项，每一种语言为 (语言名, 编译选项) 的二元组，或 (语言名, 编译选项, 首列字体大小) 的三元组。
   compile-options: (
     ("C++", "-O2 -std=c++20 -DOFFLINE_JUDGE"),
   )
