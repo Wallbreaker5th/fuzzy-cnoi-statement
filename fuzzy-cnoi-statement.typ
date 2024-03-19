@@ -364,13 +364,19 @@
     table(
       columns: columns,
       stroke: 0.4pt,
+      align: horizon,
       ..{
         languages.map(l => {
-          ([对于 #l.at(0) #h(1fr) 语言], )
+          if (l.len() == 2) {
+            l += (1em, )
+          }
+          (text(size: l.at(2))[对于 #l.at(0) #h(1fr) 语言], )
           problem-list.map(p => {
             let v = p.at("submit-file-name", default: p.name-en + "." + l.at(1))
             if (type(v) == str) {
               raw(v)
+            } else if (type(v) == function){
+              v(l.at(1))
             } else {
               v
             }
@@ -386,8 +392,11 @@
       stroke: 0.4pt,
       ..{
         compile-options.map(l => {
+          if (l.len() == 2) {
+            l += (1em, )
+          }
           (
-            [对于 #l.at(0) #h(1fr) 语言],
+            text(size: l.at(2))[对于 #l.at(0) #h(1fr) 语言],
             table.cell(
               colspan: problem-list.len(),
               raw(l.at(1))

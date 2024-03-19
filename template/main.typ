@@ -1,4 +1,4 @@
-#import "@preview/fuzzy-cnoi-statement:0.1.0": *;
+#import "@preview/fuzzy-cnoi-statement:0.1.1": *;
 
 #let prob-list = (
   (
@@ -20,17 +20,21 @@
     test-case-count: "10",
     test-case-equal: "是",
     year: "2023",
+    submit-file-name: e => {
+      show raw: set text(size: 0.8em)
+      raw("tree." + e)
+    } // 可以为 str、content 或一个 extension:str=>content 的函数
   ),
   (
     name: "深搜",
     name-en: "dfs",
     type: "提交答案型",
     executable: [无],
-    input: [`dfs`1\~10`.in`],   // 输入文件名
-    output: [`dfs`1\~10`.out`], // 输出文件名
+    input: [`dfs`$1~10$`.in`],   // 输入文件名
+    output: [`dfs`$1~10$`.out`], // 输出文件名
     test-case-count: "10",
     test-case-equal: "是",
-    submit-file-name: [`dfs`1\~10`.out`],
+    submit-file-name: [`dfs`$1~10$`.out`],
   ),
 )
 
@@ -78,19 +82,19 @@
   // extra-rows 也可以覆盖掉默认的行。其在需要将特定行的字体变小时会有用。
   extra-rows:(
     year: (                   // 对应的 field 名
-      name: "年份",           // 显示的名字
+      name: "年份",           // 显示的名字；可以用 content（调整字号等）
       wrap: text,             // 显示的样式：若这一项是 str，则显示为 wrap(str)。默认为 text。
       always-display: false,  // 是否总是显示：若为 false，则至少要有一个题目有这一项才会显示。默认为 false。
       default: "2023"         // 默认值，默认为“无”。你也可以传入一个函数，其接受一个参数，为当前题目的信息。
     ),
     contest: (
       name: "赛事",
-      wrap: text.with(fill: blue),
+      wrap: text.with(fill: blue, size: 0.8em), // 更小的字体
       always-display: true,
       default: "NOI"
     ),
     setter: (
-      name: "出题人",
+      name: text(fill: red)[出题人],
       always-display: true,
       default: p => { p.name-en + "的出题人" }
     ),
@@ -100,12 +104,12 @@
       default: "这一行不会显示"
     )
   ),
-  // 提交源程序文件名的列表，每一种语言为 (语言名, 文件后缀名) 的二元组。若 problem 没有指明 submit-file-name，则用题目英文名与后缀名拼接。
+  // 提交源程序文件名的列表，每一种语言为 (语言名, 文件后缀名) 的二元组，或 (语言名, 文件后缀名, 表头字体大小) 的三元组。若 problem 没有指明 submit-file-name，则用题目英文名与后缀名拼接。
   languages:(
     ("C++", "cpp"),
-    ("D++", "dpp")
+    ("D++", "dpp", 0.8em) // 更小的字号
   ),
-  // 各个语言的编译选项，每一种语言为 (语言名, 编译选项) 的二元组。
+  // 各个语言的编译选项，每一种语言为 (语言名, 编译选项) 的二元组，或 (语言名, 编译选项, 表头字体大小) 的三元组。
   compile-options: (
     ("C++", "-O2 -std=c++20 -DOFFLINE_JUDGE"),
   )
