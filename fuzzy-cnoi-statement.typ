@@ -381,12 +381,18 @@
 
     [编译选项]
     table(
-      columns: (first-column-width, 1fr),
+      columns: columns,
       align: (left+bottom, center+bottom),
       stroke: 0.4pt,
       ..{
         compile-options.map(l => {
-          ([对于 #l.at(0) #h(1fr) 语言], raw(l.at(1)))
+          (
+            [对于 #l.at(0) #h(1fr) 语言],
+            table.cell(
+              colspan: problem-list.len(),
+              raw(l.at(1))
+            )
+          )
         }).flatten()
       }
     )
