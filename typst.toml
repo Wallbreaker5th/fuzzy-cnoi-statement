@@ -1,6 +1,6 @@
 [package]
 name = "fuzzy-cnoi-statement"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "fuzzy-cnoi-statement.typ"
 authors = ["Wallbreaker5th"]
 license = "MIT-0"
