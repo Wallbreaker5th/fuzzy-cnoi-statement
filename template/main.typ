@@ -69,6 +69,7 @@
   // - * subtask-count 子任务数目（1）
   // - * test-case-equal 测试点是否等分（是）
   // 如果你需要显示额外的行，可以使用 extra-rows 参数。
+  // extra-rows 也可以覆盖掉默认的行。其在需要将特定行的字体变小时会有用。
   extra-rows:(
     year: (                   // 对应的 field 名
       name: "年份",           // 显示的名字
