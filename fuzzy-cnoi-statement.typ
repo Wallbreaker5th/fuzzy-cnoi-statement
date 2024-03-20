@@ -381,7 +381,7 @@
 
     [编译选项]
     table(
-      columns: (first-column-width, 1fr),
+      columns: (first-column-width, 1fr * problem-list.len()),
       align: (left+bottom, center+bottom),
       stroke: 0.4pt,
       ..{
