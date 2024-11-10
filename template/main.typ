@@ -1,4 +1,4 @@
-#import "@preview/fuzzy-cnoi-statement:0.1.1": *;
+#import "@preview/fuzzy-cnoi-statement:0.1.2": *;
 
 // 以下有大量 Fancy 的设置项。你可以根据需求，注释掉你不需要的内容，或者将你需要的内容取消注释。
 
