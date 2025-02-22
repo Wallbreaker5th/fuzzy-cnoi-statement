@@ -58,6 +58,7 @@
 }
 
 #let default-header(contest-info, current-problem) = {
+  set par(first-line-indent: 0em)
   if (current-problem == none) {
     return
   }
@@ -125,10 +126,19 @@
   }
 
   let init(it) = {
-    set text(font: (fonts.serif, fonts.cjk-serif), size: 字号.小四, lang: "zh", region: "CN")
-    show emph: set text(font: (fonts.serif, fonts.cjk-italic))
+    set text(font: ((
+      name: fonts.serif,
+      covers: "latin-in-cjk"
+    ), fonts.cjk-serif), size: 字号.小四, lang: "zh", region: "CN")
+    show emph: set text(font: ((
+      name: fonts.serif,
+      covers: "latin-in-cjk"
+    ), fonts.cjk-italic))
     show strong: st => {  // Dotted strong text
-      set text(font: (fonts.serif, fonts.cjk-sans))
+      set text(font: ((
+        name: fonts.serif,
+        covers: "latin-in-cjk"
+      ), fonts.cjk-sans))
       show regex("\p{sc=Hani}+"): s => {
         underline(s, offset: 3pt, stroke: (
           cap: "round",
@@ -138,7 +148,10 @@
       }
       st
     }
-    show raw: set text(font: (fonts.mono, fonts.cjk-mono), size: 字号.小四)
+    show raw: set text(font: ((
+      name: fonts.mono,
+      covers: "latin-in-cjk"
+    ), fonts.cjk-mono), size: 字号.小四)
 
     set list(indent: 1.75em, marker: ([•], [#h(-1em)•]))
     set enum(
@@ -152,7 +165,10 @@
       }
     )
 
-    show heading: set text(font: (fonts.serif, fonts.cjk-sans), weight: 500)
+    show heading: set text(font: ((
+      name: fonts.serif,
+      covers: "latin-in-cjk"),
+    fonts.cjk-sans), weight: 500)
     show heading.where(level: 1): it => {
       set text(size: 字号.小二)
       set heading(bookmarked: true)
@@ -197,17 +213,9 @@
       },
     )
 
-    show figure: add-empty-par
     show table: pad.with(y: .5em)
-    show table: add-empty-par
-    show heading: add-empty-par
-    show list: add-empty-par
-    show enum: add-empty-par
-    show raw.where(block: true): add-empty-par
-    show rect: add-empty-par
-    show block: add-empty-par
     
-    set par(first-line-indent: 2em, leading: 0.7em)
+    set par(first-line-indent: (amount: 2em, all: true), leading: 0.7em)
     // Looks right but I'm not sure about the exact value
     set par(spacing: 0.6em)
 
@@ -217,7 +225,10 @@
   
   let title() = {
     align(center, {
-      text(contest-info.name, size: 字号.二号, font: (fonts.serif, fonts.cjk-sans))
+      text(contest-info.name, size: 字号.二号, font: ((
+        name: fonts.serif,
+        covers: "latin-in-cjk"
+      ), fonts.cjk-sans))
 
       parbreak()
       v(10pt)
@@ -238,14 +249,20 @@
 
       let author = contest-info.at("author", default: none)
       if (author != none) {
-        text(author, size: 字号.小三, font: (fonts.serif, fonts.cjk-sans))
+        text(author, size: 字号.小三, font: ((
+          name: fonts.serif,
+          covers: "latin-in-cjk"
+        ), fonts.cjk-sans))
         parbreak()
         v(5pt)
       }
 
       let time = contest-info.at("time", default: none)
       if (time != none) {
-        text(time, size: 字号.小三, font: (fonts.serif, fonts.cjk-sans))
+        text(time, size: 字号.小三, font: ((
+          name: fonts.serif,
+          covers: "latin-in-cjk"
+        ), fonts.cjk-sans))
       }
     })
   }
