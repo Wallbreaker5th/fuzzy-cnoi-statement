@@ -337,7 +337,7 @@
     )
 
     set table(align: bottom)
-    let first-column-width = if (problem-list.len() <= 3) { 22% } else { 1fr }
+    let first-column-width = if (problem-list.len() <= 3) { 22% } else { 1.2fr }
     let columns = (first-column-width, ) + (1fr, ) * problem-list.len()
     table(
       columns: columns,
